@@ -1,0 +1,247 @@
+/* Importação da tipografia moderna */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
+
+/* --- Variáveis de Cores e Estilos --- */
+:root {
+    --cor-primaria: #E50914; /* Vermelho Filmex */
+    --cor-fundo-escura: #0D0D0D; /* Preto Profundo */
+    --cor-fundo-clara: #1A1A1A; /* Cinza Escuro para cards */
+    --cor-texto-principal: #F0F0F0; /* Branco Suave */
+    --cor-texto-secundario: #B0B0B0; /* Cinza para descrições */
+    --sombra-card: 0 4px 15px rgba(0, 0, 0, 0.5);
+    --sombra-hover: 0 8px 25px rgba(229, 9, 20, 0.4);
+}
+
+/* --- Reset e Estilos Globais --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease; /* Microinterações suaves */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--cor-fundo-escura);
+    color: var(--cor-texto-principal);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* --- Cabeçalho de Destaque (Hero) --- */
+.hero {
+    /* Usando a logo como fundo */
+    background: 
+        linear-gradient(to bottom, var(--cor-fundo-escura) 5%, transparent 100%),
+        url("img/filmex_logo.png") no-repeat center top / 150px, /* Ajuste o caminho e o tamanho da sua logo aqui */
+        radial-gradient(circle at center, rgba(229, 9, 20, 0.1) 0%, transparent 60%);
+    background-color: #1a1a1a;
+    background-blend-mode: multiply;
+    padding: 150px 0 80px 0;
+    text-align: center;
+    border-bottom: 4px solid var(--cor-primaria);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+}
+
+.hero h1 {
+    font-size: 4em;
+    font-weight: 900;
+    color: var(--cor-primaria);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.9), 0 0 20px rgba(229, 9, 20, 0.5);
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+.hero h2 {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: var(--cor-texto-principal);
+    margin-top: 5px;
+}
+
+/* --- Seção de Catálogo (CSS Grid) --- */
+#catalogo {
+    display: grid;
+    /* 4 colunas de tamanho flexível, com um mínimo de 250px de largura */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 60px 5vw; /* Espaçamento lateral */
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.cardFilme {
+    background-color: var(--cor-fundo-clara);
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 20px;
+    box-shadow: var(--sombra-card);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.cardFilme:hover {
+    transform: translateY(-5px); /* Efeito de elevação sutil */
+    box-shadow: var(--sombra-hover);
+}
+
+/* --- Imagens dos Cartazes --- */
+.cardFilme img {
+    width: 100%;
+    /* Proporção 2:3 típica de pôster de filme */
+    aspect-ratio: 2 / 3; 
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Detalhes do Filme --- */
+.cardFilme h3 {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: var(--cor-texto-principal);
+    margin-bottom: 5px;
+}
+
+.cardFilme p {
+    font-size: 0.9em;
+    color: var(--cor-texto-secundario);
+    margin-bottom: 10px;
+    text-align: left;
+    padding: 0 5px;
+}
+
+.cardFilme p#generoFilme01,
+.cardFilme p[id^="generoFilme"] {
+    font-weight: 600;
+    color: var(--cor-primaria);
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* --- Botões Interativos --- */
+.cardFilme button {
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-principal);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 10px;
+    box-shadow: 0 2px 8px rgba(229, 9, 20, 0.4);
+    width: 100%;
+}
+
+.cardFilme button:hover {
+    background-color: #ff202c; /* Vermelho mais claro */
+    transform: scale(1.02);
+}
+
+.cardFilme p[id^="respostaBotao"] {
+    margin: 5px 0;
+    font-size: 0.85em;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* --- Minha Lista (Gerada pelo JS) --- */
+#minhaLista {
+    background-color: var(--cor-fundo-clara);
+    border-top: 3px solid var(--cor-primaria);
+    padding: 40px 5vw;
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+#minhaLista h1 {
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+    color: var(--cor-primaria);
+    margin-bottom: 20px;
+}
+
+#minhaLista .filme { /* Estilo do card de filme gerado pelo JS */
+    background-color: #222;
+    padding: 15px;
+    border-radius: 8px;
+    width: 250px;
+    text-align: center;
+    box-shadow: var(--sombra-card);
+}
+
+#minhaLista .filme h3 {
+    color: var(--cor-texto-principal);
+    font-size: 1.2em;
+}
+
+#minhaLista .filme img {
+    /* Usando a mesma proporção dos cards do catálogo */
+    aspect-ratio: 2 / 3; 
+    object-fit: cover;
+    width: 100%;
+}
+
+/* O botão "Remover da lista" no HTML de exemplo será removido pelo JS.
+   O CSS abaixo aplica-se ao botão gerado pelo JS dentro de .filme: */
+#minhaLista .filme button {
+    background-color: #555; /* Cor diferente para destacar a ação de remover */
+    box-shadow: none;
+}
+#minhaLista .filme button:hover {
+    background-color: #888;
+}
+
+/* --- Rodapé (Footer) --- */
+footer {
+    background-color: var(--cor-fundo-escura);
+    border-top: 1px solid var(--cor-fundo-clara);
+    padding: 30px 5vw;
+    margin-top: 40px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-logo h2 {
+    color: var(--cor-primaria);
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.footer-logo p {
+    color: var(--cor-texto-secundario);
+    font-size: 0.8em;
+}
+
+.footer-social a img {
+    width: 28px;
+    height: 28px;
+    margin-left: 15px;
+    filter: invert(100%) saturate(0); /* Ícones cinza */
+}
+
+.footer-social a:hover img {
+    filter: invert(0%) sepia(90%) saturate(5000%) hue-rotate(330deg); /* Ícones vermelhos no hover */
+}
+
+.footer-copy {
+    text-align: center;
+    color: #555;
+    font-size: 0.75em;
+    margin-top: 20px;
+    width: 100%;
+}
